@@ -290,6 +290,6 @@ public class NewsController {
 	@RequestMapping("/error")
 	public String errorPage() {
 
-		return "redirect:/news/error";
+		return "error";
 	}
 }

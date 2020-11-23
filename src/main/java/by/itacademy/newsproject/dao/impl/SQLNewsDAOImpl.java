@@ -89,7 +89,7 @@ public class SQLNewsDAOImpl implements NewsDAO {
 	public void deleteNews(int id) throws DAOException {
 
 		try {
-			Session currentSession = mySessionFactory.getCurrentSession();
+				Session currentSession = mySessionFactory.getCurrentSession();
 
 			News news = currentSession.load(News.class, id);
 
