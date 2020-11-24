@@ -2,6 +2,7 @@ package by.itacademy.newsproject.controller;
 
 import java.time.LocalDate;
 import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -123,20 +124,25 @@ public class NewsController {
 
 	/**
 	 * Deletes group News from "/findAllNews" page.
-	 *
-	 * @param selectedNews - checkbox selected News
+	 * If checkboxes not selected, delete nothing.
 	 */
 	@GetMapping(value = "/deleteNewsSelected")
-	public String deleteNewsSelected(@RequestParam("selected_news") String[] selectedNews) {
+	public String deleteNewsSelected(HttpServletRequest request) {
+		String SELECT_NEWS_GROUP_DELETE = "selected_news";
 
-		int[] selectedNewsInt = new int[selectedNews.length];
+		int[] selectAllNewsInt;
 
 		try {
-			for (int i = 0; i < selectedNews.length; i++) {
-				selectedNewsInt[i] = Integer.parseInt(selectedNews[i]);
-			}
-			newsService.deleteSelectedNews(selectedNewsInt);
+			String[] selectedAllNewsString = request.getParameterValues(SELECT_NEWS_GROUP_DELETE);
 
+			selectAllNewsInt = new int[selectedAllNewsString.length];
+
+			for (int i = 0; i < selectAllNewsInt.length; i++) {
+				selectAllNewsInt[i] = Integer.parseInt(selectedAllNewsString[i]);
+			}
+			newsService.deleteSelectedNews(selectAllNewsInt);
+		} catch (NullPointerException e) {
+			logger.error("Nothing to delete because no checkbox selected / " + e);
 		} catch (NumberFormatException e) {
 			logger.error("Error parsing selected news, some of id is wrong / " + e);
 		} catch (ServiceException e) {
