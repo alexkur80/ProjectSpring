@@ -6,10 +6,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>project-spring-hib Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
@@ -114,10 +110,15 @@
       <artifactId>javax.activation</artifactId>
       <version>1.2.0</version>
     </dependency>
-
-
-
   </dependencies>
+
+  <developers>
+    <developer>
+    <name> Alexander Kurlovich </name>
+      <organization>It-Academy</organization>
+      <organizationUrl>https://www.it-academy.by/</organizationUrl>
+    </developer>
+  </developers>
 
   <build>
     <finalName>projectSpringHib</finalName>
