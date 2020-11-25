@@ -168,16 +168,28 @@ public class NewsController {
 	 */
 	@RequestMapping(value = "/findAllNews")
 	public String findAllNews(Model model, HttpSession session) {
+	final String HIDE_BUTTON = "hideButton";
+	final String DISPLAY_BUTTON = "displayButton";
 
 		List<News> news;
 
 		try {
 			news = newsService.selectAllNews();
+			if (news.size() == 0) {
+				session.setAttribute(ParameterSession.KEY_EMPTY_NEWS_TABLE, HIDE_BUTTON);
+				logger.info("hide button");
+			} else {
+				session.setAttribute(ParameterSession.KEY_EMPTY_NEWS_TABLE, DISPLAY_BUTTON);
+				logger.info("open button");
+			}
+
+
 			session.setAttribute(ParameterSession.KEY_CURRENT_PAGE, ParameterSession.ACTION_FIND_ALL_NEWS);
 		} catch (ServiceException e) {
 			logger.error("Error selecting all news  /" + e);
 			return "redirect:/news/error";
 		}
+
 
 		model.addAttribute("news", news);
 

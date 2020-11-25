@@ -33,6 +33,10 @@
 <fmt:message bundle="${locale}" key="reference.delete" var="reference_delete" />
 <fmt:message bundle="${locale}" key="copyright" var="copyright" />
 <fmt:message bundle="${locale}" key="operation.view-all-news.logo" var="operation_view_all_news_logo" />
+<fmt:message bundle="${locale}" key="result.empty.table" var="result_empty_table" />
+
+
+
 
 <c:url var="locale_en" value="/news/localization">
 <c:param name="locale" value="en" />
@@ -156,12 +160,23 @@
   
   </table>
 </c:forEach>
-          	<input type="submit" name="submit" value = "${button_delete_selected}" class="myButton" align="right">
-    		<input type="button" onclick="history.back();" value="${button_back}" class="myButton"/>
+
+  <c:set var = "buttonStatus" scope = "session" value = "${sessionScope.emptyNewsTable}"/>
+
+      <c:choose>
+      <c:when test="${buttonStatus == 'displayButton'}">
+        <input type="submit" name="submit" value = "${button_delete_selected}" class="myButton" align="right">
+        <input type="button" onclick="history.back();" value="${button_back}" class="myButton"/>
+      </c:when>
+        <c:otherwise>
+          <br>
+          ${result_empty_table}
+        </c:otherwise>
+      </c:choose>
+
     </fieldset>
   </form>
   
-
   	</td>
   </tr>
    
