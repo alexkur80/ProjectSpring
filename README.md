@@ -1,7 +1,6 @@
 ## Web project “News”
 
-* Technology stack:
-
+Technology stack:
 * Java Core
 * Apache Maven
 * SQL
