@@ -1,10 +1,11 @@
 ## Реализация проекта 'News' с использованием инструментов:
 
-* Spring MVC
+* Java Core
+* Apache Maven
+* SQL
+* JDBC
 * Hibernate
-* MySQL
-* jstl
-* Maven
+* Spring Data
+* Spring MVC
+* JSP
 * Tomcat
-* CSS, HTML
-
