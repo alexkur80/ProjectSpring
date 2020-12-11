@@ -1,4 +1,6 @@
-## Реализация проекта 'News' с использованием инструментов:
+## Web project “News”
+
+* Technology stack:
 
 * Java Core
 * Apache Maven
