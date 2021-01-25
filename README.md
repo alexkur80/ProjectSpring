@@ -10,3 +10,5 @@ Technology stack:
 * Spring MVC
 * JSP
 * Tomcat
+
+Certificate: [IT-Academy certificate](https://cloud.mail.ru/public/2yUu/2cBxDXAYJ)
